@@ -30,7 +30,7 @@ function showTextboxForActiveCard(card) {
     if (textBox) {
         setTimeout(() => {
             textBox.style.display = 'block';
-        }, 2500); // Timer starts after the card becomes visible
+        }, 2900); // Timer starts after the card becomes visible
     }
 }
 
@@ -79,9 +79,15 @@ document.addEventListener("DOMContentLoaded", () => {
     showTextboxForActiveCard(document.querySelector(".card:last-child")); // Start with the last card
 });
 
-// Handle click to animate page turn
-document.addEventListener("click", () => {
+document.addEventListener("click", (event) => {
     if (isAnimating || document.getElementById('landscape-message').style.display === 'block') return;
+
+    // Check if the clicked element is the sixth card or its container
+    if (event.target.closest("#card-sixth") || (event.target.closest("#container-id") && document.getElementById('card-sixth'))) {
+        return; // If it's the sixth card or its container, do nothing, just redirect
+    }
+
+    // Proceed with card animation for other clicks
     isAnimating = true;
 
     const slider = document.querySelector(".slider");
@@ -128,9 +134,38 @@ document.addEventListener("click", () => {
     });
 });
 
+
 // Prevent click propagation for all scrollable text boxes
-document.querySelectorAll('.scrollable-text_first, .scrollable-text_second').forEach(textbox => {
+document.querySelectorAll('.scrollable-text_first, .scrollable-text_second, .scrollable-text_extra, .scrollable-text_fourth, .scrollable-text_fifth').forEach(textbox => {
     textbox.addEventListener('click', function(event) {
         event.stopPropagation();
+    });
+});
+
+function redirectToMsgPage(event) {
+    // Stop the event from bubbling up and triggering card animation
+    event.stopPropagation();
+
+    // Redirect to the new page
+    window.location.href = "./last%20text/msg.html";
+}
+
+// Prevent video controls from triggering the card click
+document.querySelector('#card-sixth .video-container video').addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent the click event from bubbling up to the parent element
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+    const totalCards = cards.length;
+
+    cards.forEach((card, index) => {
+        const cardNumber = document.createElement("div");
+        cardNumber.className = "card-number";
+
+        // Reverse the index (start from 5 and decrement)
+        cardNumber.innerText = totalCards - index;
+        card.appendChild(cardNumber);
     });
 });

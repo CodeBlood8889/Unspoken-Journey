@@ -11,10 +11,17 @@ body {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    background-color: #dbe292; /* Your preferred background color */
+    background: linear-gradient(135deg, #fdfcfb, #f3e5ab); /* Soft gradient for warmth */
+    background-blend-mode: multiply; /* Blend the gradient with the texture */
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    background-repeat: no-repeat;
     overflow-y: auto; /* Enable vertical scrolling */
     overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: 'Georgia', serif; /* Consistent font for elegance */
+    color: #5a3d2b; /* Match the text color for harmony */
 }
+
+
 
 .container {
     display: flex;
@@ -46,6 +53,41 @@ body {
     opacity: 0;
     backface-visibility: hidden;
 }
+.card-number {
+    position: absolute;
+    bottom: 90%; /* Use percentage for dynamic placement based on card height */
+    right: 2%; /* Use percentage for dynamic horizontal placement */
+    font-size: 1.3rem; /* Adjust font size for responsiveness */
+    font-weight: 400; /* Regular weight for subtlety */
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    background-color: rgba(0, 0, 0, 0.3); /* Subtle semi-transparent black background */
+    padding: 4px 8px; /* Minimal padding */
+    border-radius: 8px; /* Softer rounded edges */
+    z-index: 1000; /* Keep it above other content */
+    text-align: center;
+    font-family: "Arial", sans-serif; /* Clean and modern font */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow for a floating effect */
+}
+
+/* Add a media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .card-number {
+        font-size: 1rem; /* Slightly smaller font size for smaller screens */
+        bottom: 8%; /* Adjust the bottom positioning */
+        right: 6%; /* Adjust the right positioning */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card-number {
+        font-size: 0.9rem; /* Smaller font for very small screens */
+        bottom: 5%; /* Adjust bottom positioning further */
+        right: 7%; /* Keep it in place horizontally */
+    }
+}
+
+
+
 
 /* Video Container Styles */
 .video-container {
@@ -138,20 +180,21 @@ body {
 
 /* Scrollable Text Styles */
 .scrollable-text_first, .scrollable-text_second {
-    width: 90%; /* Dynamically adjust width based on screen size */
-    max-width: 95%; /* Prevent overflowing on very large screens */
-    height: calc(100% - 50px); /* Use a percentage of the card's height with padding */
-    max-height: 80%; /* Limit the maximum height */
-    min-height: 200px; /* Ensure it doesn't collapse on larger screens */
+    width: 85%; /* Dynamically adjust width based on screen size */
+    max-width: 90%; /* Prevent overflowing on very large screens */
+    height: 60%; /* Take up 60% of the card's height dynamically */
+    max-height: 500px; /* Maximum height for larger screens */
+    min-height: 350px; /* Minimum height for smaller screens */
     overflow-y: auto; /* Enable scrolling if content exceeds height */
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.747); /* Semi-transparent white */
-    border: 1px solid #000;
-    border-radius: 5px;
-    font-size: 1.5rem; /* Adjust font size for better readability */
-    color: #000000;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px; /* Add more padding for a comfortable layout */
+    background-color: rgba(255, 240, 230, 0.95); /* Light pastel peach for a warm, love-letter-like feel */
+    border: 1px solid rgba(200, 150, 120, 0.5); /* Subtle border for definition */
+    border-radius: 10px; /* Softer rounded edges */
+    font-size: 1.6rem; /* Slightly larger font for readability */
+    line-height: 1.8; /* Better spacing for text */
+    font-family: 'Georgia', serif; /* Classic, elegant font */
+    color: #5a3d2b; /* Warm, rich brown text color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for a floating effect */
     box-sizing: border-box;
     display: none; /* Initially hidden */
     position: absolute; /* Position it absolutely inside the card */
@@ -160,6 +203,48 @@ body {
     transform: translate(-50%, -50%); /* Fine-tune centering */
 }
 
+.scrollable-text_extra, .scrollable-text_fourth, .scrollable-text_fifth {
+    width: 85%; /* Dynamically adjust width based on screen size */
+    max-width: 90%; /* Prevent overflowing on very large screens */
+    height: 60%; /* Take up 60% of the card's height dynamically */
+    max-height: 500px; /* Maximum height for larger screens */
+    min-height: 350px; /* Minimum height for smaller screens */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    padding: 20px; /* Add more padding for a comfortable layout */
+    background-color: rgba(255, 240, 230, 0.95); /* Light pastel peach for a warm, love-letter-like feel */
+    border: 1px solid rgba(200, 150, 120, 0.5); /* Subtle border for definition */
+    border-radius: 10px; /* Softer rounded edges */
+    font-size: 1.6rem; /* Slightly larger font for readability */
+    line-height: 1.8; /* Better spacing for text */
+    font-family: 'Georgia', serif; /* Classic, elegant font */
+    color: #5a3d2b; /* Warm, rich brown text color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for a floating effect */
+    box-sizing: border-box;
+    display: none; /* Initially hidden */
+    position: absolute; /* Position it absolutely inside the card */
+    top: 50%; /* Vertically center it */
+    left: 50%; /* Horizontally center it */
+    transform: translate(-50%, -50%); /* Fine-tune centering */
+}
+
+
+/* Optional Scrollbar Styling */
+.scrollable-text_first::-webkit-scrollbar,
+.scrollable-text_second::-webkit-scrollbar,
+.scrollable-text_extra::-webkit-scrollbar,
+.scrollable-text_fourth::-webkit-scrollbar,
+.scrollable-text_fifth::-webkit-scrollbar {
+    width: 6px; /* Narrow scrollbar */
+}
+
+.scrollable-text_first::-webkit-scrollbar-thumb,
+.scrollable-text_second::-webkit-scrollbar-thumb,
+.scrollable-text_extra::-webkit-scrollbar,
+.scrollable-text_fourth::-webkit-scrollbar-thumb,
+.scrollable-text_fifth::-webkit-scrollbar-thumb {
+    background-color: rgba(200, 150, 120, 0.5); /* Match border color for aesthetics */
+    border-radius: 10px;
+}
 
 /* Optional Scrollbar Styling for Mobile */
 .video-container::-webkit-scrollbar {
