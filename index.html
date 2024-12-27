@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>A Step Towards the Truth</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="index_style.css">
+
+</head>
+<body>
+
+    <!-- Message for Portrait Mode -->
+    <div class="landscape-message" id="landscape-message">
+        <h2>
+        Please turn to landscape mode to continue.
+        </h2>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let envelopeOpened = false; // Track if the envelope is opened
+
+        function checkOrientation() {
+            const landscapeMessage = document.getElementById('landscape-message');
+            const envelope = document.getElementById('envelope');
+
+            if (window.innerHeight > window.innerWidth) {
+                // Show message if in portrait mode
+                landscapeMessage.style.display = 'block';
+                envelope.classList.add('disabled'); // Disable interactions on envelope
+            } else {
+                // Hide message if in landscape mode
+                landscapeMessage.style.display = 'none';
+                envelope.classList.remove('disabled'); // Enable interactions on envelope
+            }
+        }
+
+        // Initial orientation check
+        window.addEventListener('resize', checkOrientation);
+        window.addEventListener('load', checkOrientation);
+    </script>
+
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <div class="envelope">
+    <div class="shadow"></div>
+    <div class="left flap"></div>
+    <div class="right flap"></div>
+    <div class="bottom flap"></div>
+    <div class="top flap"></div>
+    <div class="letter">
+      <div class="message">
+            Hi Natalya,<br><br>
+            
+            I hope you’re having a great start to the year.<br><br>
+            
+            I’m not sure if you were expecting this kind of approach from me, but this has been on my mind for quite a few months now.<br>  
+            I was confused about how to convey it, and even while creating this project, I was scared about whether it would work in my favor or not.<br><br>
+            
+            I assume you might have an idea where this conversation is going, but I’m deeply requesting you not to close this project  
+            without seeing it through to the end.<br><br>
+            
+            By now, you might be thinking, “Just like all the other guys, here’s another one confessing because I started sharing reels on Instagram  
+            and daily snaps.” But with absolute honesty, I promise you this project is not at all built as a reaction to that.<br><br>
+            
+            For now, I ask you not to think in that direction—at least not until you’ve seen the entire project.<br><br>
+            
+            First, let me tell you the real story I’ve been holding back. Then, I’ll leave it up to you to decide what to think.<br><br>
+            
+            If you’re ready, let’s start. (ALL MY FINGERS CROSSED!)<br>        
+
+        <button class="navigate-button">Click to continue</button>
+
+        </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js'></script><script  src="index_script.js"></script>
+
+</body>
+</html>
