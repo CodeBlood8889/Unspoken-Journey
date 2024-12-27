@@ -260,24 +260,3 @@ body {
     background-color: #555; /* Darker thumb on hover */
 }
 
-/* Scroll Indicator Styling for Mobile */
-.scroll-indicator {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    display: none; /* Initially hidden */
-    z-index: 1000;
-}
-
-@media screen and (max-width: 768px) {
-    .scroll-indicator {
-        display: block; /* Show on smaller screens */
-    }
-}
-
