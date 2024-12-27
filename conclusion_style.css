@@ -1,0 +1,110 @@
+* {
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-family: Courier, monospace;
+}
+
+body {
+    background: linear-gradient(15deg, #fdfcfb, #f5e08c); /* Soft gradient for warmth */
+    height: 100vh; /* Ensure body fills the screen */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrapper {
+    width: 90%; /* Make the wrapper take 90% of the screen width */
+    max-width: 1000px; /* Max width for larger screens */
+    height: 80vh; /* Adjust height to 80% of the screen */
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+    background: #fff; /* Optional background for the wrapper */
+    box-shadow: 0px 2px 14px #000; /* Box shadow for depth */
+    border-radius: 10px;
+}
+
+#paper {
+    color: #FFF;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png), url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png);
+    background-repeat: repeat-y, repeat;
+    background-size: contain; /* Ensures the background is correctly sized */
+    padding: 20px;
+    overflow-y: auto; /* Makes it scrollable when the content exceeds height */
+    border-radius: 12px;
+    box-shadow: 0px 2px 14px #000;
+    position: relative;
+}
+
+/* Semi-transparent box for text */
+.scrollable-text {
+    width: 75%; /* Reduced width to make the box smaller on the right */
+    max-width: 85%; /* Prevent overflowing on larger screens */
+    height: calc(100% - 50px); /* Use a percentage of the paper's height with padding */
+    max-height: 80%; /* Limit the maximum height */
+    min-height: 200px; /* Ensure it doesn't collapse on smaller screens */
+    overflow-y: auto; /* Enable scrolling for large content */
+    padding: 15px 20px; /* Add padding for text spacing */
+    margin-left: 120px; /* Keep the box aligned on the left */
+    background-color: rgba(255, 255, 255, 0.582); /* Increased transparency */
+    border: 1px solid #000; /* Border around the box */
+    border-radius: 5px; /* Slightly rounded corners */
+    font-size: 1.7rem; /* Slightly smaller font for better alignment */
+    color: #000000; /* Text color */
+    font-family: Courier, monospace; /* Consistent font */
+    line-height: 1.6; /* Line spacing for readability */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    box-sizing: border-box;
+}
+
+/* Adjust text alignment for smaller screens */
+@media screen and (max-width: 768px) {
+    .scrollable-text {
+        width: 85%; /* Adjust box width for smaller screens */
+        margin-left: 10%; /* Center the box slightly for smaller screens */
+        font-size: 1.2rem; /* Slightly smaller font on mobile */
+        padding: 10px; /* Compact padding for smaller screens */
+    }
+}
+
+/* Scrollbar Styling */
+.scrollable-text::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.scrollable-text::-webkit-scrollbar-thumb {
+    background-color: #888; /* Scrollbar thumb color */
+    border-radius: 5px; /* Rounded scrollbar edges */
+}
+
+.scrollable-text::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker thumb on hover */
+}
+
+.next-button-container {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Space above the button */
+}
+
+#next-button {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove borders */
+    padding: 10px 20px; /* Padding for size */
+    font-size: 1.2rem; /* Font size for readability */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    transition: background-color 0.3s ease; /* Smooth background color change */
+}
+
+#next-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
