@@ -147,7 +147,7 @@ function redirectToMsgPage(event) {
     event.stopPropagation();
 
     // Redirect to the new page
-    window.location.href = "./last%20text/msg.html";
+    window.location.href = "conclusion.html";
 }
 
 // Prevent video controls from triggering the card click
