@@ -288,8 +288,8 @@ body {
 }
 
 .next-card-video-button {
-    position: absolute;
-    top: 550px; /* Position at the top */
+    position: fixed; /* Change to fixed positioning */
+    top: 70vh; /* Position it at 70% of the viewport height */
     right: 10px; /* Align to the right */
     padding: 6px 14px; /* Compact padding */
     font-size: 0.9rem; /* Slightly smaller font */
@@ -304,6 +304,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.4), 0 0 20px rgba(0, 255, 255, 0.2); /* Subtle neon glow */
     transition: all 0.3s ease-in-out; /* Smooth transitions */
     z-index: 1000; /* Ensure it stays above videos */
+    background-color: rgba(0, 0, 0, 0.5); /* Temporary background color for visibility */
 }
 
 .next-card-video-button:hover {
