@@ -32,6 +32,7 @@ function showTextboxForActiveCard(card) {
         backPhoto.onload = () => {
             setTimeout(() => {
                 textBox.style.display = 'block'; // Display the textbox after the delay
+                addNextButton(textBox, card); // Add Next button inside the textbox
             }, 2900); // Delay in milliseconds
         };
 
@@ -39,11 +40,77 @@ function showTextboxForActiveCard(card) {
         if (backPhoto.complete) {
             setTimeout(() => {
                 textBox.style.display = 'block'; // Display the textbox after the delay
+                addNextButton(textBox, card); // Add Next button inside the textbox
             }, 2900);
         }
     }
 }
 
+// Add a Next button to the textbox
+function addNextButton(textBox, card) {
+    if (!textBox.querySelector('.next-card-button')) {
+        const button = document.createElement('button');
+        button.className = 'next-card-button';
+        button.textContent = 'Next';
+        button.onclick = () => flipToNextCard(card);
+        textBox.appendChild(button);
+    }
+}
+
+// Flip to the next card
+function flipToNextCard(currentCard) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const slider = document.querySelector(".slider");
+    const cards = Array.from(slider.querySelectorAll(".card"));
+
+    const lastCard = cards.pop();
+    const nextCard = cards[cards.length - 1];
+
+    // Pause video if the current card contains a video
+    const video = currentCard.querySelector("video");
+    if (video && !video.paused) {
+        video.pause();
+    }
+
+    // Animate the current card turning
+    gsap.to(currentCard, {
+        rotationY: -160,
+        x: -30,
+        z: -80,
+        opacity: 0,
+        duration: 2,
+        ease: "power1.inOut",
+        bezier: {
+            type: "soft",
+            values: [{ x: 0, z: 0 }, { x: -15, z: -40 }, { x: -30, z: -80 }]
+        },
+        transformOrigin: "left center",
+        onComplete: () => {
+            slider.prepend(lastCard);
+            initializeCards();
+            showTextboxForActiveCard(nextCard); // Show text for the new active card
+            isAnimating = false;
+        }
+    });
+
+    // Animate the text leaving the current card
+    gsap.to(currentCard.querySelectorAll("h1 span"), {
+        y: 200,
+        duration: 1.5,
+        ease: "power1.inOut"
+    });
+
+    // Bring the next card into view
+    gsap.set(nextCard, { opacity: 1, zIndex: 1 });
+    gsap.to(nextCard.querySelectorAll("h1 span"), {
+        y: 0,
+        duration: 1.8,
+        ease: "power1.inOut",
+        stagger: 0.05
+    });
+}
 
 // Check and handle screen orientation
 function checkOrientation() {
@@ -88,15 +155,65 @@ document.addEventListener("DOMContentLoaded", () => {
     showTextboxForActiveCard(document.querySelector(".card:last-child")); // Start with the last card
 });
 
-document.addEventListener("click", (event) => {
+// Prevent click propagation for all scrollable text boxes
+document.querySelectorAll('.scrollable-text_first, .scrollable-text_second, .scrollable-text_extra, .scrollable-text_fourth, .scrollable-text_fifth').forEach(textbox => {
+    textbox.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+});
+
+function redirectToMsgPage(event) {
+    // Stop the event from bubbling up and triggering card animation
+    event.stopPropagation();
+
+    // Redirect to the new page
+    window.location.href = "conclusion.html";
+}
+
+// Prevent video controls from triggering the card click
+document.querySelector('#card-sixth .video-container video').addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent the click event from bubbling up to the parent element
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+    const totalCards = cards.length;
+
+    cards.forEach((card, index) => {
+        const cardNumber = document.createElement("div");
+        cardNumber.className = "card-number";
+
+        // Reverse the index (start from 5 and decrement)
+        cardNumber.innerText = totalCards - index;
+        card.appendChild(cardNumber);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const videoCards = document.querySelectorAll(".card:not([data-textbox])"); // Select cards without a textbox
+
+    videoCards.forEach((card) => {
+        const nextButton = document.createElement("button");
+        nextButton.className = "next-card-video-button";
+        nextButton.textContent = "Next";
+        nextButton.onclick = (event) => {
+            event.stopPropagation(); // Prevent triggering other click events
+            // Check if the card has the ID "card-sixth"
+            if (card.id === "card-sixth") {
+                redirectToMsgPage(event); // Call the redirect function
+            } else {
+                flipCard(card); // Call the card flip functionality
+            }
+        };
+        card.appendChild(nextButton);
+    });
+});
+
+// Function to handle card flipping for the video card
+function flipCard(card) {
     if (isAnimating || document.getElementById('landscape-message').style.display === 'block') return;
 
-    // Check if the clicked element is the sixth card or its container
-    if (event.target.closest("#card-sixth") || (event.target.closest("#container-id") && document.getElementById('card-sixth'))) {
-        return; // If it's the sixth card or its container, do nothing, just redirect
-    }
-
-    // Proceed with card animation for other clicks
     isAnimating = true;
 
     const slider = document.querySelector(".slider");
@@ -147,38 +264,4 @@ document.addEventListener("click", (event) => {
         ease: "power1.inOut",
         stagger: 0.05
     });
-});
-
-// Prevent click propagation for all scrollable text boxes
-document.querySelectorAll('.scrollable-text_first, .scrollable-text_second, .scrollable-text_extra, .scrollable-text_fourth, .scrollable-text_fifth').forEach(textbox => {
-    textbox.addEventListener('click', function(event) {
-        event.stopPropagation();
-    });
-});
-
-function redirectToMsgPage(event) {
-    // Stop the event from bubbling up and triggering card animation
-    event.stopPropagation();
-
-    // Redirect to the new page
-    window.location.href = "conclusion.html";
 }
-
-// Prevent video controls from triggering the card click
-document.querySelector('#card-sixth .video-container video').addEventListener('click', function(event) {
-    event.stopPropagation(); // Prevent the click event from bubbling up to the parent element
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".card");
-    const totalCards = cards.length;
-
-    cards.forEach((card, index) => {
-        const cardNumber = document.createElement("div");
-        cardNumber.className = "card-number";
-
-        // Reverse the index (start from 5 and decrement)
-        cardNumber.innerText = totalCards - index;
-        card.appendChild(cardNumber);
-    });
-});

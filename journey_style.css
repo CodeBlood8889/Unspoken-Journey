@@ -260,3 +260,60 @@ body {
     background-color: #555; /* Darker thumb on hover */
 }
 
+.next-card-button {
+    display: block; /* Ensure the button is visible */
+    margin: 15px auto; /* Center horizontally with some spacing */
+    padding: 8px 16px; /* Adjust padding for a balanced look */
+    font-size: 1rem; /* Readable font size */
+    font-family: 'Georgia', serif; /* Match the overall theme */
+    color: #ffffff; /* White text for contrast */
+    background: linear-gradient(135deg, #6a82ac, #504e8d); /* Gradient background */
+    border: none;
+    border-radius: 25px; /* Rounded button for a modern look */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+}
+
+.next-card-button:hover {
+    background: linear-gradient(135deg, #504e8d, #3d3b70); /* Darker gradient on hover */
+    transform: translateY(-2px) scale(1.05); /* Lift and enlarge slightly */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.next-card-button:active {
+    background: #3d3b70; /* Uniform darker color when clicked */
+    transform: translateY(2px) scale(0.98); /* Slight press effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+}
+
+.next-card-video-button {
+    position: absolute;
+    top: 550px; /* Position at the top */
+    right: 10px; /* Align to the right */
+    padding: 6px 14px; /* Compact padding */
+    font-size: 0.9rem; /* Slightly smaller font */
+    font-family: 'Georgia', serif; /* Consistent with the theme */
+    color: #ffffff;
+    background: linear-gradient(135deg, #1e1e1e, #3a3a3a); /* Dark gradient background */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    border-radius: 30px; /* Fully rounded button */
+    cursor: pointer;
+    text-transform: uppercase; /* Add a modern text style */
+    letter-spacing: 1px; /* Slight spacing for elegance */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4), 0 0 20px rgba(0, 255, 255, 0.2); /* Subtle neon glow */
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+    z-index: 1000; /* Ensure it stays above videos */
+}
+
+.next-card-video-button:hover {
+    background: linear-gradient(135deg, #3a3a3a, #1e1e1e); /* Inverted gradient on hover */
+    transform: translateY(-2px) scale(1.1); /* Lift and enlarge slightly */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4); /* Stronger neon glow on hover */
+}
+
+.next-card-video-button:active {
+    background: #1e1e1e; /* Uniform dark color when clicked */
+    transform: translateY(2px) scale(0.95); /* Slight press effect */
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2); /* Reduced glow on click */
+}
