@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>A Step Towards the Truth</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="index_style.css">
-
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+  <link rel="stylesheet" href="index_style.css">
 </head>
 <body>
 
@@ -15,40 +15,18 @@
         </h2>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        let envelopeOpened = false; // Track if the envelope is opened
+    <!-- Fullscreen Button -->
+    <button id="fullscreen-btn" class="fullscreen-button">Go Fullscreen</button>
 
-        function checkOrientation() {
-            const landscapeMessage = document.getElementById('landscape-message');
-            const envelope = document.getElementById('envelope');
-
-            if (window.innerHeight > window.innerWidth) {
-                // Show message if in portrait mode
-                landscapeMessage.style.display = 'block';
-                envelope.classList.add('disabled'); // Disable interactions on envelope
-            } else {
-                // Hide message if in landscape mode
-                landscapeMessage.style.display = 'none';
-                envelope.classList.remove('disabled'); // Enable interactions on envelope
-            }
-        }
-
-        // Initial orientation check
-        window.addEventListener('resize', checkOrientation);
-        window.addEventListener('load', checkOrientation);
-    </script>
-
-<!-- partial:index.partial.html -->
-<div class="wrapper">
-  <div class="envelope">
-    <div class="shadow"></div>
-    <div class="left flap"></div>
-    <div class="right flap"></div>
-    <div class="bottom flap"></div>
-    <div class="top flap"></div>
-    <div class="letter">
-      <div class="message">
+    <div class="wrapper">
+      <div class="envelope">
+        <div class="shadow"></div>
+        <div class="left flap"></div>
+        <div class="right flap"></div>
+        <div class="bottom flap"></div>
+        <div class="top flap"></div>
+        <div class="letter">
+          <div class="message">
             Hi Natalya,<br><br>
             
             I hope you’re having a great start to the year.<br><br>
@@ -68,15 +46,15 @@
             
             If you’re ready, let’s start. (ALL MY FINGERS CROSSED!)<br>        
 
-        <button class="navigate-button">Click to continue</button>
+            <button class="navigate-button">Click to continue</button>
 
+          </div>
         </div>
+      </div>
     </div>
-  </div>
-</div>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js'></script><script  src="index_script.js"></script>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js'></script>
+    <script src="index_script.js"></script>
 </body>
 </html>
