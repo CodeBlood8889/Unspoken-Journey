@@ -92,42 +92,42 @@ opacity: 0.3;
 }
 
 .letter {
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    z-index: 1;
-    background-color: #dedce9;
-    border-radius: 10px;
-    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2), -2px -2px 4px 1px rgba(255, 255, 255, 0.2);
-    color: #50507F;
-    pointer-events: none;
-    overflow-y: auto; /* Enable vertical scrolling for the letter content */
-    padding: 10px; /* Add padding for the text inside */
-  }
-  
-  /* Message Styling Inside the Letter */
-  .letter .message {
-    font-size: 0px; /* Smaller font size for better readability */
-    line-height: 1.5; /* Line spacing for readability */
-    font-family: "Georgia", serif; /* Elegant font for a letter-like feel */
-    color: #50507F; /* Match text color to letter aesthetics */
-    word-wrap: break-word; /* Ensure long words break gracefully */
-    scroll-behavior: smooth; /* Enable smooth scrolling */
-  }
-  
-  /* Custom Scrollbar Styling for the Letter */
-  .letter::-webkit-scrollbar {
-    width: 4px; /* Narrow scrollbar */
-  }
-  
-  .letter::-webkit-scrollbar-thumb {
-    background-color: rgba(100, 100, 100, 0.4); /* Subtle scrollbar color */
-    border-radius: 10px; /* Rounded corners for scrollbar */
-  }
-  
-  .letter::-webkit-scrollbar-track {
-    background-color: rgba(200, 200, 200, 0); /* Subtle track background */
-  }
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  z-index: 1;
+  background-color: #dedce9;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2), -2px -2px 4px 1px rgba(255, 255, 255, 0.2);
+  color: #50507F;
+  pointer-events: none;
+  overflow-y: auto; /* Enable vertical scrolling for the letter content */
+  padding: 20px; /* Add more padding for a comfortable layout */
+}
+
+.letter .message {
+  font-size: 0px; /* Smaller font size for better readability */
+  line-height: 1.5; /* Line spacing for readability */
+  font-family: "Georgia", serif; /* Elegant font for a letter-like feel */
+  color: #50507F; /* Match text color to letter aesthetics */
+  word-wrap: break-word; /* Ensure long words break gracefully */
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+.letter::-webkit-scrollbar {
+  width: 3px; /* Narrow scrollbar */
+}
+
+.letter::-webkit-scrollbar-thumb {
+  height: 25px;
+  background-color: rgba(200, 150, 120, 0.5); /* Subtle scrollbar color */
+  border-radius: 10px; /* Rounded corners for scrollbar */
+}
+
+.letter::-webkit-scrollbar-track {
+  background-color: rgba(200, 200, 200, 0); /* Subtle track background */
+}
+
 
   .navigate-button {
     display: none; /* Start as hidden */

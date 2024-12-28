@@ -22,17 +22,28 @@ function initializeCards() {
     });
 }
 
-// Show the text box for the active card with a delay
+// Show the text box for the active card only after the image is loaded and then delay
 function showTextboxForActiveCard(card) {
     const textBoxClass = card.dataset.textbox;
     const textBox = card.querySelector(`.${textBoxClass}`);
+    const backPhoto = card.querySelector('.back-photo img'); // Select the image inside back-photo
 
-    if (textBox) {
-        setTimeout(() => {
-            textBox.style.display = 'block';
-        }, 2900); // Timer starts after the card becomes visible
+    if (textBox && backPhoto) {
+        backPhoto.onload = () => {
+            setTimeout(() => {
+                textBox.style.display = 'block'; // Display the textbox after the delay
+            }, 2900); // Delay in milliseconds
+        };
+
+        // Fallback for cached images
+        if (backPhoto.complete) {
+            setTimeout(() => {
+                textBox.style.display = 'block'; // Display the textbox after the delay
+            }, 2900);
+        }
     }
 }
+
 
 // Check and handle screen orientation
 function checkOrientation() {
