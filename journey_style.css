@@ -137,17 +137,23 @@ body {
 /* Back-Photo Styles for first and second cards */
 .back-photo {
     z-index: 1000;
-    width: 100%;
-    height: 100%;
+    width: 100%; /* Full width of the parent */
+    height: auto; /* Auto height to maintain aspect ratio */
+    max-height: 100vh; /* Limit the height to 80% of the viewport height */
     border-radius: 5px;
     overflow: hidden;
+    position: relative;
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 .back-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
+    width: 100%; /* Full width of the container */
+    height: auto; /* Auto height to maintain aspect ratio */
+    max-height: 100%; /* Ensure it does not exceed the container height */
+    object-fit: cover; /* Cover the area while maintaining aspect ratio */
+    object-position: center center; /* Center the image */
 }
 
 /* Landscape Orientation Message */
@@ -176,6 +182,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
+    z-index: 1001;
 }
 
 /* Scrollable Text Styles */
@@ -317,4 +324,31 @@ body {
     background: #1e1e1e; /* Uniform dark color when clicked */
     transform: translateY(2px) scale(0.95); /* Slight press effect */
     box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2); /* Reduced glow on click */
+}
+
+
+.fullscreen-button {
+    position: fixed; /* Use fixed positioning to keep it in view */
+    top: 10px; /* Position it at the top */
+    left: 10px; /* Position it on the left */
+    padding: 8px 12px; /* Padding for a comfortable click area */
+    font-size: 14px; /* Font size for readability */
+    background-color: #686598; /* Background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 1000; /* Ensure it stays above other elements */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    display: block; /* Change to block to make it visible */
+}
+
+.fullscreen-button:hover {
+    background-color: #504e8d; /* Darker shade on hover */
+}
+
+/* Fullscreen Styles */
+:fullscreen {
+    background: linear-gradient(135deg, #fdfcfb, #f3e5ab); /* Same gradient for fullscreen */
+    /* You can also add other styles here if needed */
 }

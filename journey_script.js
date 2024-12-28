@@ -265,3 +265,59 @@ function flipCard(card) {
         stagger: 0.05
     });
 }
+
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+const wrapper = document.querySelector('.container'); // Changed to match the HTML structure
+
+// Handle Fullscreen Button Click
+fullscreenBtn.addEventListener('click', () => {
+  if (window.innerHeight < window.innerWidth) { // Check if in landscape mode
+    if (!document.fullscreenElement) {
+      wrapper.requestFullscreen().catch(err => {
+        console.warn(`Error attempting to enable fullscreen mode: ${err.message}`);
+      });
+    }
+  }
+});
+
+// Check Orientation and Show Fullscreen Button
+function checkOrientation() {
+  const landscapeMessage = document.getElementById('landscape-message');
+  const envelope = document.querySelector('.envelope'); // Ensure this exists in your HTML
+
+  if (window.innerHeight > window.innerWidth) {
+    // Portrait Mode
+    landscapeMessage.style.display = 'block';
+    envelope?.classList.add('disabled'); // Ensure envelope exists
+    fullscreenBtn.style.display = 'none'; // Hide fullscreen button
+  } else {
+    // Landscape Mode
+    landscapeMessage.style.display = 'none';
+    envelope?.classList.remove('disabled'); // Ensure envelope exists
+    fullscreenBtn.style.display = 'block'; // Show fullscreen button
+  }
+}
+
+// Exit Fullscreen Handling
+function handleFullscreenChange() {
+  if (!document.fullscreenElement && window.innerHeight < window.innerWidth) {
+    // Ensure the fullscreen button is visible after exiting fullscreen in landscape
+    fullscreenBtn.style.display = 'block';
+  }
+}
+
+// Listen for Fullscreen Change Events
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+// Exit Fullscreen on Orientation Change to Portrait
+window.addEventListener('orientationchange', () => {
+  if (window.innerHeight > window.innerWidth && document.fullscreenElement) {
+    document.exitFullscreen().catch(err => {
+      console.warn(`Error attempting to exit fullscreen mode: ${err.message}`);
+    });
+  }
+});
+
+// Initial Orientation Check
+window.addEventListener('resize', checkOrientation);
+window.addEventListener('load', checkOrientation);
