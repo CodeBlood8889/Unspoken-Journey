@@ -49,6 +49,9 @@ timeline
       message.style.fontSize = "6.5px";
       message.style.pointerEvents = "auto";
       navigateButton.style.display = "block";
+
+      // Change the cursor style of the envelope to default
+      envelope.style.cursor = "default"; // Disable the pointer cursor
     }
   })
   .to(document.querySelector('.shadow'), {
