@@ -63,11 +63,9 @@ document.querySelectorAll('.video-container video').forEach(video => {
     });
 });
 
-
 // Handle scroll for video card, ensure scrolling only happens in the video card
 document.querySelector('#card-third .video-container').addEventListener('wheel', function(event) {
     event.stopPropagation();  // Prevent the scroll event from affecting other cards
-    // This makes sure only the video card can scroll
     this.scrollTop += event.deltaY; 
 });
 
@@ -95,6 +93,12 @@ document.addEventListener("click", (event) => {
 
     const lastCard = cards.pop();
     const nextCard = cards[cards.length - 1];
+
+    // Pause video if the last card contains a video
+    const video = lastCard.querySelector("video");
+    if (video && !video.paused) {
+        video.pause();
+    }
 
     // Animate the current card turning
     gsap.to(lastCard, {
@@ -134,7 +138,6 @@ document.addEventListener("click", (event) => {
     });
 });
 
-
 // Prevent click propagation for all scrollable text boxes
 document.querySelectorAll('.scrollable-text_first, .scrollable-text_second, .scrollable-text_extra, .scrollable-text_fourth, .scrollable-text_fifth').forEach(textbox => {
     textbox.addEventListener('click', function(event) {
@@ -154,7 +157,6 @@ function redirectToMsgPage(event) {
 document.querySelector('#card-sixth .video-container video').addEventListener('click', function(event) {
     event.stopPropagation(); // Prevent the click event from bubbling up to the parent element
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".card");
