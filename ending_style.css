@@ -158,3 +158,23 @@ button:active {
     text-align: center;
     margin-top: 10px;
 }
+
+.exit-message {
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: 'Georgia', serif;
+    color: #5a3d2b; /* Warm brown text color */
+    margin-top: 20px;
+    line-height: 1.5;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

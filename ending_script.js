@@ -16,7 +16,8 @@ userMessage.addEventListener("input", updateButtonText);
 // Handle the send button click
 sendButton.addEventListener("click", () => {
     if (!userMessage.value.trim()) {
-        alert("You chose to exit without saying anything.");
+        // User chose to exit without saying anything
+        displayExitMessage();
         return;
     }
 
@@ -33,6 +34,7 @@ sendButton.addEventListener("click", () => {
 
             // Successfully sent email
             const thankYouMessage = document.getElementById("thankYouMessage");
+            thankYouMessage.innerHTML = "Thank you for your message! ❤️<br>You may close the window now 😊";
             thankYouMessage.classList.remove("hidden");
             thankYouMessage.classList.add("visible");
             userMessage.value = ""; // Clear the textarea
@@ -47,3 +49,13 @@ sendButton.addEventListener("click", () => {
             alert("Oops! Something went wrong. Please try again.");
         });
 });
+
+// Display the exit message and remove the form
+function displayExitMessage() {
+    const container = document.querySelector(".container");
+
+    // Remove the existing elements
+    container.innerHTML = `
+        <p class="exit-message">I'm eagerly waiting for your response, Natalya.<br>Please reach out when you're ready! 😊</p>
+    `;
+}
