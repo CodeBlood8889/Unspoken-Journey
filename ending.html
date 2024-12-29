@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Your Message</title>
+  <link rel="stylesheet" href="ending_style.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script> <!-- Include EmailJS SDK -->
+</head>
+<body>
+  <div class="container">
+    <h1>Want to say something?</h1>
+    <textarea id="userMessage" placeholder="Type your message here..." rows="6"></textarea>
+    <button id="sendButton">Send</button>
+    <div class="spinner-container">
+        <div class="spinner" id="loadingSpinner"></div> <!-- Spinner -->
+    </div>
+    <p id="thankYouMessage" class="hidden">Thank you for your message! ❤️</center></p>
+  </div>
+  <script src="ending_script.js"></script>
+</body>
+
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "3sE03w5CMYoxGF22B",
+      });
+   })();
+</script>
+
+</html>
