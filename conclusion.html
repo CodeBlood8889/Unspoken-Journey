@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Final Confession</title>
-    <link rel="stylesheet" href="conclusion_style.css" />
-  </head>
-  <body>
-    <div id="wrapper">
-      <div id="paper">
-        <div class="scrollable-text">
-          <p>
+<head>
+  <meta charset="UTF-8">
+  <title>A Step Towards the Truth</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+  <link rel="stylesheet" href="conclusion_style.css">
+</head>
+<body>
+
+    <!-- Message for Portrait Mode -->
+    <div class="landscape-message" id="landscape-message">
+        <h2>
+        Please turn to landscape mode to continue.
+        </h2>
+    </div>
+
+    <!-- Fullscreen Button -->
+    <button id="fullscreen-btn" class="fullscreen-button">Go Fullscreen</button>
+
+    <div class="wrapper">
+      <div class="envelope">
+        <div class="shadow"></div>
+        <div class="left flap"></div>
+        <div class="right flap"></div>
+        <div class="bottom flap"></div>
+        <div class="top flap"></div>
+        <div class="letter">
+          <div class="message">
             Hey,<br><br>
             First of all, thank you so much for taking the time to go through the entire story. It means a lot to me.<br><br>
             
@@ -47,22 +63,17 @@
 
             Finally, I just wanted to show some beautiful memories that I collected (sometimes through screenshot and sometimes by using camera of other phone)<br><br>
 
-            Check the next one and not sure I will get a chance after this but...Thanks Natalya for crossing my path!!!<br>
-        </p>
-        
-          <!-- Next Button -->
-          <div class="next-button-container">
-            <button id="next-button">Next</button>
+            Check the next one and not sure I will get a chance after this but...Thanks Natalya for crossing my path!!!<br>        
+
+            <button class="navigate-button">Click to continue</button>
+
           </div>
         </div>
       </div>
     </div>
 
-    <script>
-      // Add functionality to redirect to the photo.html page
-      document.getElementById("next-button").addEventListener("click", () => {
-        window.location.href = "photo_gallery.html";
-      });
-    </script>
-  </body>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js'></script>
+    <script src="conclusion_script.js"></script>
+</body>
 </html>
