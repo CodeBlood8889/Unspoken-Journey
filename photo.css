@@ -96,3 +96,42 @@ body {
     z-index: 1000;
     display: none; /* Initially hidden */
 }
+
+/* Styling for the Next Button */
+.next-button {
+    position: fixed; /* Keeps the button at the top-right of the viewport */
+    top: 20px;
+    right: 20px;
+    z-index: 100; /* Ensure it stays on top of other elements */
+    background-color: #686598;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: 'Georgia', serif;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for the button */
+.next-button:hover {
+    background-color: #504e8d;
+    transform: scale(1.1);
+}
+
+/* Active effect for the button */
+.next-button:active {
+    background-color: #3d3b70;
+    transform: scale(0.95);
+}
+
+/* Ensure it stays within mobile view constraints */
+@media screen and (max-width: 768px) {
+    .next-button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+}
+

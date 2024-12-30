@@ -82,3 +82,16 @@ function generateGallery() {
 
 // Call the function to generate the gallery on page load
 document.addEventListener("DOMContentLoaded", generateGallery);
+
+// Add click event to the "Next" button
+document.addEventListener("DOMContentLoaded", () => {
+    const nextButton = document.getElementById("nextButton");
+    
+    if (nextButton) {
+        nextButton.addEventListener("click", () => {
+            window.location.href = "ending.html"; // Redirect to ending.html
+        });
+    } else {
+        console.error("Next button not found!");
+    }
+});
