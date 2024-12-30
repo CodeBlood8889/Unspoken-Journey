@@ -95,3 +95,60 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Next button not found!");
     }
 });
+
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+const container = document.querySelector('.container'); // Use .container instead of .wrapper
+
+// Handle Fullscreen Button Click
+fullscreenBtn.addEventListener('click', () => {
+    if (window.innerHeight < window.innerWidth) { // Check if in landscape mode
+      if (!document.fullscreenElement) {
+        container.requestFullscreen().then(() => {
+          container.style.overflowY = 'auto'; // Enable scrolling in fullscreen
+        }).catch(err => {
+          console.warn(`Error attempting to enable fullscreen mode: ${err.message}`);
+        });
+      }
+    }
+  })
+
+// Check Orientation and Show Fullscreen Button
+function checkOrientation() {
+  const landscapeMessage = document.getElementById('landscape-message');
+
+  if (window.innerHeight > window.innerWidth) {
+    // Portrait Mode
+    landscapeMessage.style.display = 'block';
+    fullscreenBtn.style.display = 'none'; // Hide fullscreen button
+  } else {
+    // Landscape Mode
+    landscapeMessage.style.display = 'none';
+    fullscreenBtn.style.display = 'block'; // Show fullscreen button
+  }
+}
+
+// Exit Fullscreen Handling
+function handleFullscreenChange() {
+    if (!document.fullscreenElement) {
+      // Ensure container overflow is restored after exiting fullscreen
+      container.style.overflowY = ''; // Reset to default (inherits from body or CSS)
+      fullscreenBtn.style.display = 'block'; // Show fullscreen button again
+    }
+  }
+
+// Listen for Fullscreen Change Events
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+// Exit Fullscreen on Orientation Change to Portrait
+window.addEventListener('orientationchange', () => {
+  if (window.innerHeight > window.innerWidth && document.fullscreenElement) {
+    document.exitFullscreen().catch(err => {
+      console.warn(`Error attempting to exit fullscreen mode: ${err.message}`);
+    });
+  }
+});
+
+// Initial Orientation Check
+window.addEventListener('resize', checkOrientation);
+window.addEventListener('load', checkOrientation);
+
