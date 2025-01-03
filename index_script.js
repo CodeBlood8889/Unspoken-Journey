@@ -60,7 +60,7 @@ timeline
     duration: 1.3,
   }, "-=1");
 
-// Handle Scrolling Inside Letter
+  // Handle Scrolling Inside Letter
 letter.addEventListener('wheel', (event) => {
   event.preventDefault();
   letter.scrollTop += event.deltaY * 0.2;
@@ -68,8 +68,48 @@ letter.addEventListener('wheel', (event) => {
 
 // Handle Navigation Button Click
 navigateButton.addEventListener('click', () => {
-  window.location.href = './journey.html';
+  console.log("Navigate button clicked. Sending data to Make...");
+
+  // Get the current timestamp
+  const timestamp = new Date();
+
+  // Format the timestamp to YYYY-MM-DD hh:mm:ss AM/PM
+  let hours = timestamp.getHours();
+  const minutes = String(timestamp.getMinutes()).padStart(2, '0');
+  const seconds = String(timestamp.getSeconds()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12; // Convert to 12-hour format
+  hours = hours ? hours : 12; // Handle 0 as 12 for midnight
+  const formattedTimestamp = timestamp.getFullYear() + '-' +
+                             String(timestamp.getMonth() + 1).padStart(2, '0') + '-' +
+                             String(timestamp.getDate()).padStart(2, '0') + ' ' +
+                             String(hours).padStart(2, '0') + ':' +
+                             minutes + ':' +
+                             seconds + ' ' + ampm;
+
+  // Log the button click to Make
+  fetch('https://hook.eu2.make.com/uiq40okno76niz11wwdlmd80x7lh3csq', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      action: 'Landing Webpage Button Clicked',
+      timestamp: formattedTimestamp,
+    }),
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('Data logged successfully in Make!');
+        window.location.href = './journey.html';
+      } else {
+        console.error('Failed to log data in Make:', response.statusText);
+        window.location.href = './journey.html';
+      }
+    })
+    .catch(error => console.error('Error logging click:', error));
 });
+
 
 const fullscreenBtn = document.getElementById('fullscreen-btn');
 const wrapper = document.querySelector('.wrapper');
