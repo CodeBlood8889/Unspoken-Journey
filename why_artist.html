@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Why Artist?</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+  <link rel="stylesheet" href="why_artist.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script> <!-- Include EmailJS SDK -->
+</head>
+<body>
+
+    <!-- Message for Portrait Mode -->
+    <div class="landscape-message" id="landscape-message">
+        <h2>
+        Please turn to landscape mode to continue.
+        </h2>
+    </div>
+
+    <!-- Fullscreen Button -->
+    <button id="fullscreen-btn" class="fullscreen-button">Go Fullscreen</button>
+
+    <div class="wrapper">
+      <div class="envelope">
+        <div class="shadow"></div>
+        <div class="left flap"></div>
+        <div class="right flap"></div>
+        <div class="bottom flap"></div>
+        <div class="top flap"></div>
+        <div class="letter">
+          <div class="message">
+            Hey Artist,<br><br>
+            Surprised by this new letter? 😊<br>
+            Well, even I never thought I will add something like this on my project, but I had to, because<br>
+            I want to discuss many-many things with you but I'm not able to, as you are still hesitant to accept that this is happening with you and worried that same thing will repeat like your past, if you fall again.<br><br>
+
+            I completely understand that, and that’s why I am not saying this on your face - but adding it here - as even I want to remove these things from my mind untill we meet (because then toh this will definitely be discussed).<br><br>
+
+            I will be updating this specific page whenever I'll have some questions in my mind (because now I am not feeling good to always discuss this with you on call and then you go in deep thoughts alone without letting me know and then cry whole night),
+            and this time, sorry but I am not going to say again and again to not take things on your charachter or how someone dare to question your maturity, because I want to know you - and not everytime it should be just that I should be understanding on my own - but even I like hearing the things from your mouth
+            and I feel there's nothing wrong in that. And there are no limts on you also, you are totally open to ask any kind of questions (literally "any" question) without any fear and I am going to answer it even if it requires any proofs to show.<br><br>
+
+            Okay, let me start with my questions,<br><br>
+
+            
+            1> Let's start with that question that triggered me to create this page i.e. Why are you discussing me among others, when I am pleading not to?<br>
+            I mean while you were going to Kolkata, I requested you not to discuss me - but you did (I am talking about showing this webpage project). I'm damn sure, if I would have asked you this on call,
+            you would have triggered and simply say okay I am not going to open your website again, without giving me any explanation.<br>
+            Think again Natalya, I am not saying <b>you</b> to don't open it, my concern is why others are getting to see it.<br><br>
+
+            If you ask me, whats going in my mind, like what I am thinking why are you doing this, then there are 2 things coming,<br>
+            1. You are trying to get praises <b>for me</b> for my efforts from your friends, that see he has done so much and does even these kind of boys exists as well.<br>
+            2. Or, you are just soooo happy, that someone did this much efforts for you, and you are sharing this happiness with all your closest friends.<br><br>
+            
+            Whatever might be the reason, maybe one of above or both or other, my concern is, why are you sharing when things are not confirmed yet.
+            I mean why you want to write something, when there's a possibility that you will need to erase it going forward (sorry for being bold).<br><br>
+            
+            If you want to understand my mindset, that why I am not discussing these things with my friends,
+            it's because, I don't want that they should see my future partner (if someone else), and have a feeling, that “Oh, she was the second choice, not the one he initially fell for.”
+            How bad would she feel knowing she was just an option? 💔<br>
+            And same applies for you as well, how would your partner feel infront of your friends, incase some converstion comes out regarding your past, and if something will hit him that oh shit, I was not the first.
+            I know this sounds ridiculous, and one should be mature enough to understand things, and only see that in present she's with me and blah blah, but deep down it does feel bad, especially when you are with friends.<br>
+            On the other hand, if these kind of past stays within the two, then how easy it becomes to handle your bad feelings na?<br><br>
+
+            And okay, leave that also, but on every page, I have written my very pure feelings and intentions which was just for you Natalya, then why other people are getting to read and see that.<br>
+            And I told you naa, "NAZAR IS REAL", even when I don't believe too much on this - I still don't want to take any risk of unfortunate separation currently. I'm sorry if Sarthak, Ritika or any of your friend is reading this,
+            but I am sorry guys, no personal attacks on you, but I don't feel that this should be shared now with you guys.<br>
+            Let <b>us</b> have our discussion, come to a conclusion, and then you guys are welcome to know. I know you guys will never think bad for Natalya, but so won't I.<br>
+            ------------------------------<br>
+
+            I will be updating this section every weekend with one more question [incase if I have any (currently toh I have many)], and the idea is to then discuss this with you Natalya when we'll meet.<br>
+            <br>And please please, even if you are reading this before that, don't discuss with me about this on call.<br>
+            If you want to say something on any question, then I am keeping a textbox below for you to correct me or share your inputs.<br><br><br>
+            
+            <textarea id="userMessage" placeholder="Type your message here..." rows="6"></textarea>
+            <button id="sendButton">Send</button>
+            <p id="thankYouMessage" class="hidden">Thank you for your message! ❤️</center></p>
+
+            <button class="navigate-button">Click to continue</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js'></script>
+    <script src="why_artist.js"></script>
+</body>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "3sE03w5CMYoxGF22B",
+      });
+   })();
+</script>
+</html>

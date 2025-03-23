@@ -4,7 +4,7 @@ const topElem = document.querySelector('.top.flap');
 const letter = document.querySelector('.letter');
 const navigateButton = document.querySelector('.navigate-button');
 const landscapeMessage = document.getElementById('landscape-message');
-const whyArtistButton = document.querySelector('.why-artist-button');
+const sendButton = document.getElementById("sendButton");
 
 // GSAP Timeline for Animation
 const timeline = gsap.timeline({ paused: true, duration: 0.25 });
@@ -50,8 +50,6 @@ timeline
       message.style.fontSize = "6.5px";
       message.style.pointerEvents = "auto";
       navigateButton.style.display = "block";
-      whyArtistButton.style.display = "block";
-      
 
       // Change the cursor style of the envelope to default
       envelope.style.cursor = "default"; // Disable the pointer cursor
@@ -97,7 +95,7 @@ navigateButton.addEventListener('click', () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      action: 'Conclusion Webpage Button Clicked',
+      action: 'Extra Webpage End Button Clicked',
       timestamp: formattedTimestamp,
     }),
   })
@@ -169,48 +167,27 @@ window.addEventListener('orientationchange', () => {
 window.addEventListener('resize', checkOrientation);
 window.addEventListener('load', checkOrientation);
 
+// Handle the send button click
+sendButton.addEventListener("click", () => {
 
+    sendButton.disabled = true;
 
-// Handle Navigation Button Click
-whyArtistButton.addEventListener('click', () => {
-  console.log("New Webpage button clicked. Sending data to Make...");
+    emailjs
+        .send("service_mo94e8f", "template_a2brcba", { message: userMessage.value })
+        .then(() => {
+            sendButton.disabled = false;
 
-  // Get the current timestamp
-  const timestamp = new Date();
+            // Successfully sent email
+            const thankYouMessage = document.getElementById("thankYouMessage");
+            thankYouMessage.innerHTML = "Thank you❤️<br>You can continue😊";
+            thankYouMessage.classList.remove("hidden");
+            thankYouMessage.classList.add("visible");
+            userMessage.value = ""; // Clear the textarea
+        })
+        .catch((error) => {
+            sendButton.disabled = false;
 
-  // Format the timestamp to YYYY-MM-DD hh:mm:ss AM/PM
-  let hours = timestamp.getHours();
-  const minutes = String(timestamp.getMinutes()).padStart(2, '0');
-  const seconds = String(timestamp.getSeconds()).padStart(2, '0');
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12; // Convert to 12-hour format
-  hours = hours ? hours : 12; // Handle 0 as 12 for midnight
-  const formattedTimestamp = timestamp.getFullYear() + '-' +
-                             String(timestamp.getMonth() + 1).padStart(2, '0') + '-' +
-                             String(timestamp.getDate()).padStart(2, '0') + ' ' +
-                             String(hours).padStart(2, '0') + ':' +
-                             minutes + ':' +
-                             seconds + ' ' + ampm;
-
-  // Log the button click to Make
-  fetch('https://hook.eu2.make.com/uiq40okno76niz11wwdlmd80x7lh3csq', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      action: 'New Webpage Button Clicked',
-      timestamp: formattedTimestamp,
-    }),
-  })
-    .then(response => {
-      if (response.ok) {
-        console.log('Data logged successfully in Make!');
-        window.location.href = 'why_artist.html';
-      } else {
-        console.error('Failed to log data in Make:', response.statusText);
-        window.location.href = 'why_artist.html';
-      }
-    })
-    .catch(error => console.error('Error logging click:', error));
+            console.error("Failed to send the email:", error);
+            alert("Oops! Something went wrong. Please try again.");
+        });
 });
