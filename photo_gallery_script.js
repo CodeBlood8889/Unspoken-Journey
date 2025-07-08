@@ -25,6 +25,7 @@ const imageUrls = [
 "https://pub-368ce702e60f480dbdda7c4d3adc9d54.r2.dev/Artist_%20(2).jpg",
  "https://pub-368ce702e60f480dbdda7c4d3adc9d54.r2.dev/June_Artist%20(2).jpg",
 "https://pub-368ce702e60f480dbdda7c4d3adc9d54.r2.dev/June_Artist%20(3).jpg",
+"https://pub-368ce702e60f480dbdda7c4d3adc9d54.r2.dev/July_Artist%20(1).JPG",
 "https://pub-368ce702e60f480dbdda7c4d3adc9d54.r2.dev/June_Artist%20(34).jpg",
 "https://pub-368ce702e60f480dbdda7c4d3adc9d54.r2.dev/June_Artist%20(4).jpg",
 "https://pub-368ce702e60f480dbdda7c4d3adc9d54.r2.dev/June_Artist%20(5).jpg",
